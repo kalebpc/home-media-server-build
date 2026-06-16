@@ -24,8 +24,7 @@ services:
     environment:
       - TS_AUTH_KEY=${AUTH_KEY}?ephemeral=false
       - TS_STATE_DIR=/var/lib/tailscale
-# --snat-sub.. unmask tailscale user ip
-      - TS_EXTRA_ARGS=--advertise-tags=tag:jellyfin --snat-subnet-routes=false #--accept-routes # Enabling this allows the client to receive all advertised subnet routes, which can lead to route conflicts if local physical LANs overlap with advertised subnets
+      - TS_EXTRA_ARGS=--advertise-tags=tag:jellyfin #--accept-routes # Enabling this allows the client to receive all advertised subnet routes, which can lead to route conflicts if local physical LANs overlap with advertised subnets
       - TS_ROUTES=192.168.0.0/24 # same as route in Jellyfin exit node for redundant failover
 #      - TS_AUTH_KEY=${AUTH_KEY} # key with expiration date
     network_mode: host
